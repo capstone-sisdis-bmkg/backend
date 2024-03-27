@@ -8,7 +8,7 @@ version: '3.7'
 volumes:
   orderer.example.com:
   peer0.bmkg.example.com:
-  peer0.supplychain.example.com:
+  # peer0.supplychain.example.com:
 
 networks:
   bmkg_network:
@@ -155,6 +155,6 @@ services:
       - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
       - peer0.bmkg.example.com
-      - peer0.supplychain.example.com
+      # - peer0.supplychain.example.com
     networks:
       - bmkg_network
