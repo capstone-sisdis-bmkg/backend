@@ -74,25 +74,24 @@ type KelembabanUdara struct {
 }
 
 // CreateAsset issues a new asset to the world state with given details.
-func (s *CERTContract) CreateCERT(ctx contractapi.TransactionContextInterface) error {
-	args := ctx.GetStub().GetArgs()
+func (s *CERTContract) CreateCERT(ctx contractapi.TransactionContextInterface, args string) error {
 
 	var cert BMKGCertificateResult
-	err := json.Unmarshal(args[0], &cert)
-
+	err := json.Unmarshal([]byte(args), &cert)
+   
 	if err != nil {
-
+	 return fmt.Errorf("Failed to Unmarshal input JSON: %v", err)
 	}
-
+   
 	certJSON, err := json.Marshal(cert)
 	if err != nil {
-		return err
+	 return err
 	}
-
+   
 	err = ctx.GetStub().PutState(cert.NoCertificate, certJSON)
 	if err != nil {
-		fmt.Errorf(err.Error())
+	 fmt.Errorf(err.Error())
 	}
-
+   
 	return err
-}
+   }

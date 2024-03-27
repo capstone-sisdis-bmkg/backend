@@ -108,11 +108,10 @@ const loginUser = async (username, password) => {
 
     // kurang id sama email, nanti tarik dulu dari cc
     payload.token = token
+    return iResp.buildSuccessResponse(200, `Successfully Login`, payload)
   } else {
     throw new Error('Invalid credentials')
   }
-
-  return iResp.buildSuccessResponse(200, `Successfully Login`, payload)
 }
 
 module.exports = {
