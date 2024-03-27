@@ -3,7 +3,6 @@ const iResp = require('../utils/response.interface.js')
 
 const FabricCAServices = require('fabric-ca-client')
 const fabric = require('../utils/fabric.js')
-const { sendEmail } = require('../utils/mail.js')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const bcrypt = require('bcrypt')
@@ -69,7 +68,7 @@ const registerAdminBMKG = async (
   await createUser(username, email, organizationName, userType)
 
   const payload = {
-    id: userId,
+    id: uuidv4(),
     username: username,
     email: email,
     userType: userType,
@@ -92,7 +91,7 @@ const loginUser = async (username, password) => {
 
   if (!user) {
     throw new Error(`User ${username} is not registered yet`)
-  } 
+  }
 
   // Get user attr
   const userAttrs = await fabric.getUserAttrs(username, organizationName)

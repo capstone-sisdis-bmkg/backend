@@ -78,7 +78,7 @@ func (s *CERTContract) CreateCERT(ctx contractapi.TransactionContextInterface) e
 	args := ctx.GetStub().GetArgs()
 
 	var cert BMKGCertificateResult
-	err := json.Unmarshal(args[1], &cert)
+	err := json.Unmarshal(args[0], &cert)
 
 	if err != nil {
 

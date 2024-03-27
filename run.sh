@@ -8,4 +8,5 @@ sleep 5
 
 sleep 5
 
-./network.sh deployCC -ccn basic -ccp ../chaincode/atcontract -ccl go
+# ./network.sh deployCC -ccn basic -ccp ../chaincode/atcontract -ccl go
+./network.sh deployCC -ccn certcontract -ccp ../chaincode/certcontract -ccl go
